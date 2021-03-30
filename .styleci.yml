@@ -1,5 +1,5 @@
 php:
-  preset: laravel
+  preset: psr12
   disabled:
     - no_unused_imports
   finder:
@@ -10,4 +10,4 @@ js:
   finder:
     not-name:
       - webpack.mix.js
-css: true
+css: false

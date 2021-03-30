@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "cleanup": "vendor/bin/phpcs --standard=PSR12 ./app/ --colors",
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",
