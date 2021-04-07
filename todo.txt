@@ -1,0 +1,22 @@
+Views ->
+För att logga in 
+För att skapa ett konto -> Student / Teacher
+Dashboard -> Enablea skapa Inlämning för lärare via roles -> För elever att view inlämningar
+Redigera Inlämning
+
+
+TEACHER
+Skapa inlämningar
+Rediga inlämningar
+Ta bort Inlämning
+
+STUDENT
+
+
+ASSIGNMENT
+Card
+titel
+Beskrivning
+due dates
+bild
+files (extra)
