@@ -19,6 +19,7 @@ class CreateAssignmentsTable extends Migration
             $table->text("description");
             $table->date("due_date");
             $table->timestamps();
+            //$table->foreign("assignment_id")->references("id")->on("resources")->onDelete("cascade");
             // Add teacher dependency
         });
     }

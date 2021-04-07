@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 
-<body class="bg-gray-200 dark:bg-black-gh-bg">
+<body class="bg-gray-200 dark:bg-black-gh">
     <nav class="bg-blue-500 dark:bg-dark-gh-banner flex flex-wrap p-4 sm:flex-nowrap sm:justify-between">
         <ul class="flex items-center">
             <li>
-                <a href="" class="navbar-link dark:text-white">Home</a>
+                <a href="{{ route('dashboard') }}" class="navbar-link dark:text-white">Dashboard</a>
             </li>
             <li>
                 <a href="" class="navbar-link dark:text-white">Settings</a>

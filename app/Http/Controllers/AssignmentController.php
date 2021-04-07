@@ -4,49 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    //  public function __construct()
+    //    {
+    //      $this->middleware('auth');
+    //    }
+
+
     public function index()
     {
-        //
+        return view("assignments.index");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // As god intended it to be
     public function create()
     {
-        //
+        return view("assignments.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        // Logik för att skapa en konkret assignment
+        $user_id = Auth::user()->id;
+
+        $assignment = Assignment::create([
+            "user_id" => $user_id,
+            "title" => request("title"),
+            "description" => request("description"),
+            "due_date" => request("due_date"),
+        ]);
+
+        return redirect("/assignments/{$assignment->id}");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Assignment $assignment)
     {
-        //
+        return view("assignments.show");
     }
 
     /**
@@ -72,14 +71,14 @@ class AssignmentController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Assignment $assignment)
+
+    public function destroy($id)
     {
-        //
+        $assignment = Assignment::findOrFail($id);
+        if ((int)$assignment->user_id !== Auth::user()->id) {
+            return ("Nice try, you can only delete your own Posts");
+        };
+        $assignment->delete();
+        return redirect("/");
     }
 }

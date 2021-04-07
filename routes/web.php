@@ -19,17 +19,26 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/register", [RegisterController::class, "index"])->name('register');
-Route::get("/signin", [LoginController::class, "index"])->name('login');;
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get("/signin", [LoginController::class, "index"])->name('login');
+Route::post('/signin', [LoginController::class, 'store']); // inherits name
+
 Route::get("/signout", [LogoutController::class, "index"]);
 
 
 // Index view, shows a list of all assignments in Desc order
-Route::get('/', [AssignmentController::class], "index");
+Route::get('/', [AssignmentController::class, "index"])->name('dashboard');
 
 // Route for students/Teacher to view a specific assignment
-Route::get("/assignment/{id}", [AssignmentController::class, "show"]);
+Route::get("/assignment/create", [AssignmentController::class, "create"])->name("assignments.create");
+Route::post("/assignment/create", [AssignmentController::class, "store"])->name("assignments.store");
+
+Route::get("/assignment/{id}", [AssignmentController::class, "show"])->name("assignments.show");
 
 // Routes for teachers to create, update and delete assignments.
-Route::post("/assignment/create", [AssignmentController::class], "create");
-Route::put("/assignment/{id}", [AssignmentController::class], "edit");
-Route::delete("/assignment/{id}", [AssignmentController::class], "delete");
+//Route::post("/assignment/create", [AssignmentController::class, "store"]);
+
+Route::put("/assignment/{id}", [AssignmentController::class, "edit"]);
+Route::delete("/assignment/{id}", [AssignmentController::class, "delete"]);
