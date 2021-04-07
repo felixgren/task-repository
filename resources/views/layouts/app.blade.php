@@ -35,7 +35,7 @@
 
             @auth
                 <li>
-                    <a href="" class="navbar-link dark:text-white">Settings</a>
+                    <a href="{{ route('settings') }}" class="navbar-link dark:text-white">Settings</a>
                 </li>
                 <li>
                     <form action="{{ route('logout') }}" method="post" class="inline navbar-link dark:text-white">

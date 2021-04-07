@@ -4,8 +4,11 @@
     hi, this is assignment index/dashboard. <br>
     @auth
         you are authenticated. <br>
-        name {{ auth()->user()->name }} <br>
-        username {{ auth()->user()->username }} <br>
+        <div class="bg-blue-300">
+            NAME: {{ auth()->user()->name }} <br>
+            USERNAME: {{ auth()->user()->username }} <br>
+            EMAIL: {{ auth()->user()->email }} <br>
+        </div>
     @endauth
 
     @guest
