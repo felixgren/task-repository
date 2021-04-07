@@ -16,10 +16,7 @@
                 <a href="{{ route('dashboard') }}" class="navbar-link dark:text-white">Dashboard</a>
             </li>
             <li>
-                <a href="" class="navbar-link dark:text-white">Settings</a>
-            </li>
-            <li>
-                <a href="" class="navbar-link dark:text-white">Posts</a>
+                <a href="" class="navbar-link dark:text-white">Placeholder</a>
             </li>
         </ul>
 
@@ -38,10 +35,10 @@
 
             @auth
                 <li>
-                    <a href="" class="navbar-link dark:text-white"></a>
+                    <a href="" class="navbar-link dark:text-white">Settings</a>
                 </li>
                 <li>
-                    <form action="" method="post" class="inline navbar-link dark:text-white">
+                    <form action="{{ route('logout') }}" method="post" class="inline navbar-link dark:text-white">
                         @csrf
                         <button type="submit">Logout</button>
                     </form>

@@ -23,9 +23,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get("/signin", [LoginController::class, "index"])->name('login');
-Route::post('/signin', [LoginController::class, 'store']); // inherits name
+Route::post('/signin', [LoginController::class, "store"]); // inherits name
 
-Route::get("/signout", [LogoutController::class, "index"]);
+Route::post("/signout", [LogoutController::class, "store"])->name('logout');
 
 
 // Index view, shows a list of all assignments in Desc order

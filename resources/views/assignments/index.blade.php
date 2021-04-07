@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    hej assignment index <br>
+    hi, this is assignment index/dashboard. <br>
     @auth
-        you are authenticated
+        you are authenticated. <br>
+        name {{ auth()->user()->name }} <br>
+        username {{ auth()->user()->username }} <br>
     @endauth
 
     @guest
