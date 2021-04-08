@@ -34,3 +34,14 @@ REQUIREMENTS
     Relationships
     Validation
     Views (Blade)
+
+
+FELIX
+user has many roles
+user has many permissions
+
+role has many users
+permission has many users
+
+???
+many-to-many!!111
