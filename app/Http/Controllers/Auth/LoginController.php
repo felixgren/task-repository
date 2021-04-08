@@ -15,7 +15,6 @@ class LoginController extends Controller
 
     public function store(Request $request) // Sign user in
     {
-
         $rules = [
             'email' => 'required|email',
             'password' => 'required',

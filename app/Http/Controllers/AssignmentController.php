@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-
     // Moved over middleware to routes
     // public function __construct()
     // {
