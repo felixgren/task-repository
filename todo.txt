@@ -20,3 +20,17 @@ Beskrivning
 due dates
 bild
 files (extra)
+
+
+REQUIREMENTS
+    Controllers
+    Migrations
+    HTTP Tests (on all routes)
+    Laravel Mix
+    Middleware
+    Models (with relationships)
+    Routes (with route model binding)
+    Eloquent
+    Relationships
+    Validation
+    Views (Blade)
