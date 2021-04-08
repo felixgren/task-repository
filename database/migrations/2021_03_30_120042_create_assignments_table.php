@@ -19,8 +19,8 @@ class CreateAssignmentsTable extends Migration
             $table->text("description");
             $table->date("due_date");
             $table->timestamps();
-            //$table->foreign("assignment_id")->references("id")->on("resources")->onDelete("cascade");
-            // Add teacher dependency
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
         });
     }
 
