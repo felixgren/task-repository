@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\Auth\LoginController;
@@ -32,7 +34,14 @@ Route::post('/signout', [LogoutController::class, 'store'])->name('logout')->mid
 
 Route::middleware(['auth'])->group(function () {
     // Index view, shows a list of all assignments in Desc order
-    Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
+    // Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
+
+    // WIP 
+    Route::get('/', function (Request $request) {
+        // $user = Auth::User(); no access to method..
+        $user = $request->user();
+        dd($user->hasRole('teacher'));
+    })->name('dashboard');
 
     // View account profile
     Route::get('/users/{user:username}', [UserProfileController::class, 'index'])->name('users.profile');
