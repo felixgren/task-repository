@@ -26,9 +26,10 @@ class UserSettingController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->description = $request->description;
-
         $user->save();
 
-        return back()->with('status', 'Profile successfully updated!');
+        return redirect()->route('users.profile', [
+            'user' => $user,
+        ])->with('status', 'Profile successfully updated!');
     }
 }

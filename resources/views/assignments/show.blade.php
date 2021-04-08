@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>Hi!! im the view SHOW</p>
     <main>
-        <form action="POST" method="post">
-            @csrf
+        <div class="flex flex-col mb-8">
+            <h1 class="text-3xl font-bold">{{ $assignment->title }}</h1>
+            <p class="text-gray-600">Due date: {{ $assignment->due_date }}</p>
+        </div>
 
-            <div><label for="title">Assignment title</label><input type="text" name="title" id="title"></div>
-            <div><label for="due_date">Due Date</label><input type="date" name="due_date" id="due_date"></div>
-        </form>
+        <div>
+            <h2 class="text-xl font-bold">Assignment description</h2>
+            <p>{{ $assignment->description }}</p>
+        </div>
     </main>
 @endsection

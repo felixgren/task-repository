@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/assignment/create', [AssignmentController::class, 'create'])->name('assignments.create');
     Route::post('/assignment/create', [AssignmentController::class, 'store'])->name('assignments.store');
 
-    Route::get('/assignment/{id}', [AssignmentController::class, 'show'])->name('assignments.show');
+    Route::get('/assignment/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
 
     // Routes for teachers to create, update and delete assignments.
     //Route::post('/assignment/create', [AssignmentController::class, 'store']);

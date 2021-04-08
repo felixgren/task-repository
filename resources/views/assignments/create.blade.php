@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="px-4">
-        <form action="POST" method="post">
+        <form method="POST" action="/assignment/create">
             @csrf
             <div class="flex">
                 <label class="mr-2" for="title">Assignment title</label>

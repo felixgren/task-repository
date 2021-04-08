@@ -73,12 +73,6 @@
                         settings</button>
                 </div>
 
-                @if (session('status'))
-                    <div class="text-red-500 my text-lg">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
             </form>
         </div>
     </div>

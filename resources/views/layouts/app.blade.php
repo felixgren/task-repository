@@ -35,7 +35,9 @@
 
             @auth
                 <li>
-                    <a href="{{ route('settings') }}" class="navbar-link dark:text-white">Settings</a>
+                    <a href="{{ route('users.profile', auth()->user()) }}"
+                        class="navbar-link text-transform: capitalize dark:text-white">{{ auth()->user()->username }}
+                    </a>
                 </li>
                 <li>
                     <form action="{{ route('logout') }}" method="post" class="inline navbar-link dark:text-white">

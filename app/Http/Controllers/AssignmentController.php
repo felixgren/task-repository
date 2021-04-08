@@ -31,6 +31,7 @@ class AssignmentController extends Controller
         // Logik för att skapa en konkret assignment
         $user_id = Auth::user()->id;
 
+
         $assignment = Assignment::create([
             "user_id" => $user_id,
             "title" => request("title"),
@@ -38,13 +39,13 @@ class AssignmentController extends Controller
             "due_date" => request("due_date"),
         ]);
 
-        return redirect("/assignments/{$assignment->id}");
+        return redirect("/assignment/{$assignment->id}");
     }
 
 
     public function show(Assignment $assignment)
     {
-        return view("assignments.show");
+        return view("assignments.show", ["assignment" => $assignment]);
     }
 
     /**
