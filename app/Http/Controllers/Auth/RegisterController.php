@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Hash facade 
+            'password' => Hash::make($request->password), // Hash facade
         ]);
 
         Auth::attempt($request->only('email', 'password'));
