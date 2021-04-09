@@ -66,5 +66,4 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes for teachers to create, update and delete assignments.
     //Route::post('/assignment/create', [AssignmentController::class, 'store']);
-
 });
