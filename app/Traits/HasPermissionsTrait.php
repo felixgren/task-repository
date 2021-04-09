@@ -10,7 +10,7 @@ trait HasPermissionsTrait
     // Check if user has role, supports checking multiple roles. [input array]
     // Compare input to roles in 'name' column in roles table
     // --When checking multiple roles, any match will result true return--
-    public function hasRole(...$roles)
+    public function checkRole(...$roles)
     {
         foreach ($roles as $role) {
             if ($this->roles->contains('name', $role)) {
@@ -20,9 +20,12 @@ trait HasPermissionsTrait
         return false;
     }
 
-    public function hasPermission($permission)
+    public function checkPermission($permission)
     {
-        return $this->hasPermission($permission);
+        if ($this->permissions->where('name', $permission->name)) {
+            return true;
+        }
+        return false;
     }
 
     public function roles()

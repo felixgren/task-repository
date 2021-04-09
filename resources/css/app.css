@@ -6,4 +6,16 @@
     .navbar-link {
         @apply text-sm pr-4 sm:text-base sm:p-3;
     }
+
+    .assignment-form-div {
+        @apply flex mb-2;
+    }
+
+    .main-assignment {
+        @apply p-4 max-w-2xl mx-auto;
+    }
+
+    .errorMsg {
+        @apply text-red-700 text-lg;
+    }
 }

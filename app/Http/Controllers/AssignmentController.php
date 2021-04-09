@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-    // Moved over middleware to routes
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
     public function index()
     {
@@ -26,11 +21,12 @@ class AssignmentController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store()
     {
+        $this->validateAssignment();
+
         // Logik för att skapa en konkret assignment
         $user_id = Auth::user()->id;
-
 
         $assignment = Assignment::create([
             "user_id" => $user_id,
@@ -48,27 +44,16 @@ class AssignmentController extends Controller
         return view("assignments.show", ["assignment" => $assignment]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Assignment $assignment)
     {
-        //
+
+        return view("assignments.edit", ["assignment" => $assignment]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Assignment $assignment)
+    public function update(Assignment $assignment)
     {
-        //
+        $assignment->update($this->validateAssignment());
+        return view("assignments.show", ["assignment" => $assignment]);
     }
 
 
@@ -80,5 +65,14 @@ class AssignmentController extends Controller
         };
         $assignment->delete();
         return redirect("/");
+    }
+
+    public function validateAssignment()
+    {
+        return request()->validate([
+            "title" => ["required", "min:3"],
+            "due_date" => ["required", "date"],
+            "description" => ["required", "min:3"],
+        ]);
     }
 }

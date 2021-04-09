@@ -32,16 +32,19 @@ Route::get('/signin', [LoginController::class, 'index'])->name('login')->middlew
 Route::post('/signin', [LoginController::class, 'store'])->middleware(['guest']);
 Route::post('/signout', [LogoutController::class, 'store'])->name('logout')->middleware(['auth']);
 
+
+
+
 Route::middleware(['auth'])->group(function () {
     // Index view, shows a list of all assignments in Desc order
-    // Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
+    Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
 
     // WIP
-    Route::get('/', function (Request $request) {
+    Route::get('/test', function (Request $request) {
         // $user = Auth::User(); no access to method..
         $user = $request->user();
-        dd($user->hasRole('teacher'));
-    })->name('dashboard');
+        dd($user->can('create assignment'));
+    });
 
     // View account profile
     Route::get('/users/{user:username}', [UserProfileController::class, 'index'])->name('users.profile');
@@ -51,14 +54,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/settings', [UserSettingController::class, 'update']);
 
     // Route for students/Teacher to view a specific assignment
+
+
     Route::get('/assignment/create', [AssignmentController::class, 'create'])->name('assignments.create');
     Route::post('/assignment/create', [AssignmentController::class, 'store'])->name('assignments.store');
-
     Route::get('/assignment/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+
+    Route::put('/assignment/{assignment}', [AssignmentController::class, 'update'])->name("assignments.update");
+    Route::get('/assignment/{assignment}/edit', [AssignmentController::class, 'edit'])->name("assignments.edit");
+    Route::delete('/assignment/{assignment}', [AssignmentController::class, 'delete']);
 
     // Routes for teachers to create, update and delete assignments.
     //Route::post('/assignment/create', [AssignmentController::class, 'store']);
 
-    Route::put('/assignment/{id}', [AssignmentController::class, 'edit']);
-    Route::delete('/assignment/{id}', [AssignmentController::class, 'delete']);
 });
