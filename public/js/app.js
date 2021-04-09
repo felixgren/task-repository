@@ -1842,6 +1842,24 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var deletePostWarning = function deletePostWarning() {
+  var deleteBtn = document.querySelector(".deleteAssignmentBtn");
+  var form = document.querySelector(".deleteForm");
+
+  if (deleteBtn && form) {
+    deleteBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (confirm("Are you sure you want to delete this assignment?")) {
+        console.log("Should propogate form submit");
+        form.submit();
+      }
+    });
+  }
+};
+
+deletePostWarning();
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

@@ -2,13 +2,13 @@ Views ->
 För att logga in 
 För att skapa ett konto -> Student / Teacher
 Dashboard -> Enablea skapa Inlämning för lärare via roles -> För elever att view inlämningar
-Redigera Inlämning
+Redigera Inlämning -> CHECK
 
 
 TEACHER
-Skapa inlämningar
-Rediga inlämningar
-Ta bort Inlämning
+Skapa inlämningar -> CHECK
+Rediga inlämningar -> CHECK
+Ta bort Inlämning -> CHECK
 
 STUDENT
 
@@ -23,18 +23,29 @@ files (extra)
 
 
 REQUIREMENTS
-    Controllers
-    Migrations
-    HTTP Tests (on all routes)
-    Laravel Mix
-    Middleware
-    Models (with relationships)
-    Routes (with route model binding)
-    Eloquent
-    Relationships
-    Validation
-    Views (Blade)
+    Controllers -> Check
+    Migrations -> Check
+    HTTP Tests (on all routes) -> Todo
+    Laravel Mix -> Check
+    Middleware -> Check
+    Models (with relationships) -> Check
+    Routes (with route model binding) -> Check
+    Eloquent -> Check
+    Relationships -> Check
+    Validation -> Check
+    Views (Blade) -> Check
 
+
+    TODO 
+    Fix styling globally
+    Http tester
+    connect permisisons/roles to assignments
+    set up role/permission interface? how will it look and what will it contain
+    admin interface?
+
+    Enable edit button only for users with permissions
+    Create the dashboard View
+    
 
 FELIX
 user has many roles
