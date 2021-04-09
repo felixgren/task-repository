@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\PermissionsServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class, // my god let me find this stupid fucking error
 
     ],
 

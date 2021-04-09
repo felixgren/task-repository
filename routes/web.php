@@ -43,7 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/test', function (Request $request) {
         // $user = Auth::User(); no access to method..
         $user = $request->user();
-        dd($user->can('create assignment'));
+        // dump($user->hasRole('admin'));
+        dd($user->can("edit posts"));
     });
 
     // View account profile
