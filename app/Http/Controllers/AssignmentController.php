@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-
     public function index()
     {
         return view("assignments.index");
@@ -46,7 +45,6 @@ class AssignmentController extends Controller
 
     public function edit(Assignment $assignment)
     {
-
         return view("assignments.edit", ["assignment" => $assignment]);
     }
 
