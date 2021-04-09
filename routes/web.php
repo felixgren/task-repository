@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     // Index view, shows a list of all assignments in Desc order
     // Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
 
-    // WIP 
+    // WIP
     Route::get('/', function (Request $request) {
         // $user = Auth::User(); no access to method..
         $user = $request->user();
