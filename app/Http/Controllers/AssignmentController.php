@@ -55,12 +55,8 @@ class AssignmentController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Assignment $assignment)
     {
-        $assignment = Assignment::findOrFail($id);
-        if ((int)$assignment->user_id !== Auth::user()->id) {
-            return ("Nice try, you can only delete your own Posts");
-        };
         $assignment->delete();
         return redirect("/");
     }
