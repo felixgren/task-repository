@@ -7,35 +7,24 @@ use App\Models\Permission;
 
 trait HasPermissionsTrait
 {
-    public function hasPermissionTo($permission)
+    // We pass in a string, we avoid exposing the method through protected hasPermission.
+    public function hasPermissionTo($permission): bool
     {
-        // string is passed to this
-        // has permission throug role
-
-        // return $this->hasPermission($permission)
-        // return true;
-        dd($this->hasPermission($permission));
+        return $this->hasPermission($permission);
     }
 
-    protected function hasPermission($permission)
+    protected function hasPermission($permission): bool
     {
-        return $this->permissions;
-        // return $this->permissions->where('name', $permission->name);
-        // foreach ($permissions as $permission) {
-        //     if ($this->permissions()->contains('name', $permission)) {
-        //         return true;
-        //     }
-        // }
-        // return false;
+        return $this->permissions->where('permission_name', $permission->permission_name)->count();
     }
 
     // Check if user has role, supports checking multiple roles. [input array]
-    // Compare input to roles in 'name' column in roles table
+    // Compare input to roles in 'role_name' column in roles table
     // --When checking multiple roles, any match will result true return--
-    public function hasRole(...$roles)
+    public function hasRole(...$roles): bool
     {
         foreach ($roles as $role) {
-            if ($this->roles->contains('name', $role)) {
+            if ($this->roles->contains('role_name', $role)) {
                 return true;
             }
         }
@@ -47,15 +36,8 @@ trait HasPermissionsTrait
         return $this->belongsToMany(Role::class, 'users_roles'); // user has many roles
     }
 
-    public function hehe()
-    {
-        return "fuck my liiife";
-    }
-
     public function permissions()
     {
-        return $this->belongsToMany(Permission::class, 'users_permissisons'); // user has many perms
-
-        // AAAAAAAAAAAAAAAAAAA IT WAS A FUCKING TYPO
+        return $this->belongsToMany(Permission::class, 'users_permissions'); // user has many perms
     }
 }

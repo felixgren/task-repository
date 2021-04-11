@@ -15,8 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id')->index();
-            $table->string('name'); // student, teacher, admin
+            $table->string('role_name'); // student, teacher, admin
             $table->timestamps();
         });
     }

@@ -41,10 +41,12 @@ Route::middleware(['auth'])->group(function () {
 
     // WIP
     Route::get('/test', function (Request $request) {
-        // $user = Auth::User(); no access to method..
         $user = $request->user();
+        dump($user->can('edit assignments'));
         // dump($user->hasRole('admin'));
-        dd($user->can("edit posts"));
+        // dd($user->hasPermissionTo('lol'));
+        // dd($user->hasRole('student'));
+        // dd($user->hasPermissionTo('edit assignments'));
     });
 
     // View account profile

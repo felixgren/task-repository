@@ -13,7 +13,7 @@ class CreateUsersPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_permisisons', function (Blueprint $table) {
+        Schema::create('users_permissions', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('permission_id')->unsigned();
 
@@ -32,6 +32,6 @@ class CreateUsersPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_permisisons');
+        Schema::dropIfExists('users_permissions');
     }
 }

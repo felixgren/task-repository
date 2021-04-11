@@ -15,7 +15,7 @@ class CreatePermissionsTable extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // create assignment, delete assignment, edit profile etc
+            $table->string('permission_name'); // create assignment, delete assignment, edit profile etc
             $table->timestamps();
         });
     }
