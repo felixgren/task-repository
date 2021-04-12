@@ -15,3 +15,24 @@ const deletePostWarning = () => {
     }
 };
 deletePostWarning();
+
+const deleteFileUploaded = async () => {
+    const deleteBtns = document.querySelectorAll(".deleteFileBtn");
+
+    deleteBtns?.forEach((elem) => {
+        const id = elem.dataset.id;
+        elem.addEventListener("click", async (e) => {
+            e.preventDefault();
+            const res = await fetch(
+                `http://localhost:3000/api/assignment/10/delete/${id}`
+            );
+            const { deleted } = await res.json();
+
+            if (deleted) {
+                elem.parentElement.remove();
+            }
+        });
+    });
+};
+
+deleteFileUploaded();

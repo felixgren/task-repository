@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\FileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:web')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get("/assignment/{assignment}/delete/{fileName}", [FileController::class, "deleteFile"]);

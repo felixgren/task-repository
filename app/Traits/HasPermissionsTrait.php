@@ -10,6 +10,8 @@ trait HasPermissionsTrait
     // We pass in a string, we avoid exposing the method through protected hasPermission.
     public function hasPermissionTo($permission): bool
     {
+        // here i will check if perm is through role too 
+
         return $this->hasPermission($permission);
     }
 

@@ -46,6 +46,7 @@ REQUIREMENTS
     Enable edit button only for users with permissions
     Create the dashboard View
     Enable CLOCKWORK
+    Fixa vem som postat 
     
 
 FELIX

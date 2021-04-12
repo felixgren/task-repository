@@ -15,7 +15,7 @@ class AssignmentController extends Controller
     public function index()
     {
         $assignments = DB::table("assignments")->get()->sortBy("due_date");
-        return view("assignments.index", ["assignments" => $assignments,]);
+        return view("assignments.index", ["assignments" => $assignments]);
     }
 
     // As god intended it to be
@@ -27,8 +27,6 @@ class AssignmentController extends Controller
 
     public function store()
     {
-
-        // die(var_dump();
 
         $this->validateAssignment();
 
@@ -56,24 +54,24 @@ class AssignmentController extends Controller
     public function show(Assignment $assignment)
     {
         // Gets the file from storage
-        $files = Storage::files("/{$assignment->id}");
-        $files = array_map(function ($file) {
-            return explode("/", $file)[1];
-        }, $files);
+        $files = $this->getAssociatedFiles($assignment);
 
         return view("assignments.show", ["assignment" => $assignment, "files" => $files]);
     }
 
     public function edit(Assignment $assignment)
     {
-        return view("assignments.edit", ["assignment" => $assignment]);
+        // Gets the file from storage
+        $files = $this->getAssociatedFiles($assignment);
+
+        return view("assignments.edit", ["assignment" => $assignment,  "files" => $files]);
     }
 
     public function update(Assignment $assignment)
     {
         $assignment->update($this->validateAssignment());
 
-        return view("assignments.show", ["assignment" => $assignment]);
+        return $this->show($assignment);
     }
 
 
@@ -97,5 +95,14 @@ class AssignmentController extends Controller
             "due_date" => ["required", "date"],
             "description" => ["required", "min:3"],
         ]);
+    }
+
+    public function getAssociatedFiles(Assignment $assignment)
+    {
+        // Gets the file from storage
+        $files = Storage::files("/{$assignment->id}");
+        return array_map(function ($file) {
+            return explode("/", $file)[1];
+        }, $files);
     }
 }

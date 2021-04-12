@@ -30,6 +30,26 @@
         <p class="errorMsg">{{$message}}</p>
         @enderror
 
+        @if (count($files) >0)
+        <div class="my-4">
+            <p class="font-bold mb-2">Resources</p>
+            <div class="">
+                <input type="file" id="file" name="file[]" multiple="multiple">
+                @error("file")
+                <p class="errorMsg">{{$message}}</p>
+                @enderror
+            </div>
+
+            @foreach ($files as $file)
+            <div class="my-2">
+                <p><a class="underline" href="/assignment/{{$assignment->id}}/download/{{$file}}">{{ $file }}</a></p>
+
+                <button data-id={{$file}} class="bg-red-500 h-6 w-6 rounded-full deleteFileBtn">X</button>
+            </div>
+            @endforeach
+        </div>
+        @endif
+
         <input class="bg-main hover:bg-blue-400 px-4 py-2 cursor-pointer" type="submit" value="Update Assignment">
     </form>
 
@@ -39,7 +59,6 @@
         @method("DELETE")
         <button class="deleteAssignmentBtn bg-red-500 hover:bg-red-600 px-4 py-2" type="submit">Delete Assignment</button>
     </form>
-
 
 
 </main>
