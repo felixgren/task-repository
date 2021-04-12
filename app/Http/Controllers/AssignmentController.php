@@ -11,7 +11,7 @@ class AssignmentController extends Controller
 {
     public function index()
     {
-        $assignments = DB::table("assignments")->get();
+        $assignments = DB::table("assignments")->get()->sortBy("due_date");
         return view("assignments.index", ["assignments" => $assignments,]);
     }
 

@@ -30,14 +30,16 @@
         <p class="errorMsg">{{$message}}</p>
         @enderror
 
-        <input class="bg-main hover:bg-blue-400 px-4 py-2" type="submit" value="Update Assignment">
+        <input class="bg-main hover:bg-blue-400 px-4 py-2 cursor-pointer" type="submit" value="Update Assignment">
     </form>
 
-    <form class="deleteForm" method="POST" action="/assignment/{{$assignment->id}}">
+
+    <form class="deleteForm flex w-full mt-2 md:justify-end md:-mt-10" method="POST" action="/assignment/{{$assignment->id}}">
         @csrf
         @method("DELETE")
         <button class="deleteAssignmentBtn bg-red-500 hover:bg-red-600 px-4 py-2" type="submit">Delete Assignment</button>
     </form>
+
 
 
 </main>

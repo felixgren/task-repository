@@ -38,13 +38,14 @@ REQUIREMENTS
 
     TODO 
     Fix styling globally
-    Http tester
+    Http tester - https://laravel.com/docs/8.x/http-tests
     connect permisisons/roles to assignments
     set up role/permission interface? how will it look and what will it contain
     admin interface?
 
     Enable edit button only for users with permissions
     Create the dashboard View
+    Enable CLOCKWORK
     
 
 FELIX

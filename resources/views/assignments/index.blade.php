@@ -5,7 +5,7 @@
     <h1 class="text-3xl font-bold mb-2 md:mb-4">Assignments</h1>
     <section class="grid md:grid-cols-2 gap-6">
         @foreach ($assignments as $assignment)
-        <div class="border-gray-300 border-2 rounded-md p-8 flex flex-col">
+        <div class="border-gray-300 border-2 rounded-md p-4 md:px-8 md:pb-6 flex flex-col">
             <div class="flex justify-between items-center">
                 <p class="text-lg text-blue-900 mb-1">{{$assignment->title}}</p>
                 <p class="text-blue-900 mb-1 opacity-40">{{$assignment->due_date}}</p>
