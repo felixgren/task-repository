@@ -41,8 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
 
     // WIP
-    Route::get('/test', function (Request $request) {
-        $user = $request->user();
+    Route::get('/test', function () {
+        // $user = $request->user();
+        $user = Auth::user();
         $user->givePermissionTo('delete assignments', 'edit assignments');
         // $user->removePersmissionTo('edit assignments', 'delete assignments', 'create assignments');
 
