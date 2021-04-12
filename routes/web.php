@@ -67,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/assignment/{assignment}/edit', [AssignmentController::class, 'edit'])->name("assignments.edit");
     Route::delete('/assignment/{assignment}', [AssignmentController::class, 'destroy'])->name("assignments.destroy");
 
+    Route::get('/assignment/{assignment}/download', [AssignmentController::class, 'download'])->name("assignments.download");
+
+
     // Routes for teachers to create, update and delete assignments.
     //Route::post('/assignment/create', [AssignmentController::class, 'store']);
 });

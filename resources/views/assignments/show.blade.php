@@ -17,5 +17,10 @@
         <h2 class="text-xl font-bold">Assignment description</h2>
         <p>{{ $assignment->description }}</p>
     </div>
+
+    <div>
+        <h3>Resources</h3>
+        <a href="/assignment/{{$assignment->id}}/download">Download file</a>
+    </div>
 </main>
 @endsection

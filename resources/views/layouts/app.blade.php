@@ -16,7 +16,7 @@
                 <a href="{{ route('dashboard') }}" class="navbar-link dark:text-white">Dashboard</a>
             </li>
             <li>
-                <a href="" class="navbar-link dark:text-white">Placeholder</a>
+                <a href="{{ route('assignments.create')}}" class="navbar-link dark:text-white">Create Assignment</a>
             </li>
         </ul>
 
@@ -25,26 +25,25 @@
 
         <ul class="flex items-center">
             @guest
-                <li>
-                    <a href="{{ route('login') }}" class="navbar-link dark:text-white">Login</a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}" class="navbar-link dark:text-white">Register</a>
-                </li>
+            <li>
+                <a href="{{ route('login') }}" class="navbar-link dark:text-white">Login</a>
+            </li>
+            <li>
+                <a href="{{ route('register') }}" class="navbar-link dark:text-white">Register</a>
+            </li>
             @endguest
 
             @auth
-                <li>
-                    <a href="{{ route('users.profile', auth()->user()) }}"
-                        class="navbar-link text-transform: capitalize dark:text-white">{{ auth()->user()->username }}
-                    </a>
-                </li>
-                <li>
-                    <form action="{{ route('logout') }}" method="post" class="inline navbar-link dark:text-white">
-                        @csrf
-                        <button type="submit">Logout</button>
-                    </form>
-                </li>
+            <li>
+                <a href="{{ route('users.profile', auth()->user()) }}" class="navbar-link text-transform: capitalize dark:text-white">{{ auth()->user()->username }}
+                </a>
+            </li>
+            <li>
+                <form action="{{ route('logout') }}" method="post" class="inline navbar-link dark:text-white">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
             @endauth
         </ul>
     </nav>
