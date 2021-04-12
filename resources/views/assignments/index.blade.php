@@ -1,13 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-hi, this is assignment index/dashboard. <br>
-@auth
-you are authenticated. <br>
-<div class="bg-blue-300">
-    NAME: {{ auth()->user()->name }} <br>
-    USERNAME: {{ auth()->user()->username }} <br>
-    EMAIL: {{ auth()->user()->email }} <br>
-</div>
-@endauth
+<main class="p-4 max-w-7xl mx-auto md:mt-2">
+    <h1 class="text-3xl font-bold mb-2 md:mb-4">Assignments</h1>
+    <section class="grid md:grid-cols-2 gap-6">
+        @foreach ($assignments as $assignment)
+        <div class="border-gray-300 border-2 rounded-md p-8 flex flex-col">
+            <div class="flex justify-between items-center">
+                <p class="text-lg text-blue-900 mb-1">{{$assignment->title}}</p>
+                <p class="text-blue-900 mb-1 opacity-40">{{$assignment->due_date}}</p>
+            </div>
+            <div style="height: 1px;" class="separator w-full bg-gray-300 rounded-md mb-2"></div>
+            <p>{{mb_strimwidth($assignment->description, 0, 255, "...")}}</p>
+            <button class="w-40 bg-yellow-300 rounded-md px-2 py-1 self-end mt-3 hover:bg-yellow-400">
+                <a href="/assignment/{{$assignment->id}}">Show assignment</a>
+            </button>
+        </div>
+
+        @endforeach
+    </section>
+
+</main>
 @endsection

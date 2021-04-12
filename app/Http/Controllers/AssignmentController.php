@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {
     public function index()
     {
-        return view("assignments.index");
+        $assignments = DB::table("assignments")->get();
+        return view("assignments.index", ["assignments" => $assignments,]);
     }
 
     // As god intended it to be
