@@ -18,13 +18,19 @@ deletePostWarning();
 
 const deleteFileUploaded = async () => {
     const deleteBtns = document.querySelectorAll(".deleteFileBtn");
+    const containerId = document.querySelector(".resourceContainer")?.dataset
+        .assignment;
 
     deleteBtns?.forEach((elem) => {
         const id = elem.dataset.id;
+
         elem.addEventListener("click", async (e) => {
+            console.log(
+                `http://localhost:3000/api/assignment/${containerId}/delete/${id}`
+            );
             e.preventDefault();
             const res = await fetch(
-                `http://localhost:3000/api/assignment/10/delete/${id}`
+                `http://localhost:3000/api/assignment/${containerId}/delete/${id}`
             );
             const { deleted } = await res.json();
 

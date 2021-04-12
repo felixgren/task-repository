@@ -1883,12 +1883,15 @@ deletePostWarning();
 
 var deleteFileUploaded = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-    var deleteBtns;
+    var _document$querySelect;
+
+    var deleteBtns, containerId;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             deleteBtns = document.querySelectorAll(".deleteFileBtn");
+            containerId = (_document$querySelect = document.querySelector(".resourceContainer")) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.dataset.assignment;
             deleteBtns === null || deleteBtns === void 0 ? void 0 : deleteBtns.forEach(function (elem) {
               var id = elem.dataset.id;
               elem.addEventListener("click", /*#__PURE__*/function () {
@@ -1899,16 +1902,17 @@ var deleteFileUploaded = /*#__PURE__*/function () {
                     while (1) {
                       switch (_context.prev = _context.next) {
                         case 0:
+                          console.log("http://localhost:3000/api/assignment/".concat(containerId, "/delete/").concat(id));
                           e.preventDefault();
-                          _context.next = 3;
-                          return fetch("http://localhost:3000/api/assignment/10/delete/".concat(id));
+                          _context.next = 4;
+                          return fetch("http://localhost:3000/api/assignment/".concat(containerId, "/delete/").concat(id));
 
-                        case 3:
+                        case 4:
                           res = _context.sent;
-                          _context.next = 6;
+                          _context.next = 7;
                           return res.json();
 
-                        case 6:
+                        case 7:
                           _yield$res$json = _context.sent;
                           deleted = _yield$res$json.deleted;
 
@@ -1916,7 +1920,7 @@ var deleteFileUploaded = /*#__PURE__*/function () {
                             elem.parentElement.remove();
                           }
 
-                        case 9:
+                        case 10:
                         case "end":
                           return _context.stop();
                       }
@@ -1930,7 +1934,7 @@ var deleteFileUploaded = /*#__PURE__*/function () {
               }());
             });
 
-          case 2:
+          case 3:
           case "end":
             return _context2.stop();
         }

@@ -10,7 +10,10 @@
 
     <div class="flex flex-col mb-8">
         <h1 class="text-3xl font-bold">{{ $assignment->title }}</h1>
-        <p class="text-gray-600">Due date: {{ $assignment->due_date }}</p>
+        <div class="flex flex-col md:flex-row md:gap-10">
+            <a href="{{ route('users.profile', $assignment->user->username) }}" class="text-gray-800">Created by: {{$assignment->user->username}}</p>
+                <p class="text-gray-600">Due date: {{ $assignment->due_date }}</p>
+        </div>
     </div>
 
     <div>

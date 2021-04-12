@@ -40,12 +40,7 @@ class AssignmentController extends Controller
             "due_date" => request("due_date"),
         ]);
 
-        Storage::disk("local")->makeDirectory($assignment->id);
-
-        foreach (request()->file("file") as $file) {
-            $name = $file->getClientOriginalName();
-            $file->storeAs("/{$assignment->id}", $name);
-        }
+        $this->saveFilesToDisk($assignment);
 
         return redirect("/assignment/{$assignment->id}");
     }
@@ -70,8 +65,16 @@ class AssignmentController extends Controller
     public function update(Assignment $assignment)
     {
         $assignment->update($this->validateAssignment());
-
         return $this->show($assignment);
+    }
+
+
+    public function addImages(Assignment $assignment)
+    {
+        // die(var_dump($assignment));
+        $this->saveFilesToDisk($assignment);
+
+        return redirect("/assignment/{$assignment->id}");
     }
 
 
@@ -104,5 +107,17 @@ class AssignmentController extends Controller
         return array_map(function ($file) {
             return explode("/", $file)[1];
         }, $files);
+    }
+
+    public function saveFilesToDisk(Assignment $assignment)
+    {
+
+        Storage::disk("local")->makeDirectory($assignment->id);
+
+        for ($i = 0; $i < count(request()->file("file")); $i++) {
+            $file = request()->file("file")[$i];
+            $ext = $file->extension();
+            $file->storeAs("/{$assignment->id}", "{$i}.{$ext}");
+        }
     }
 }

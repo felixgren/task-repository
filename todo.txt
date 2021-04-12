@@ -1,25 +1,6 @@
-Views ->
-För att logga in 
-För att skapa ett konto -> Student / Teacher
-Dashboard -> Enablea skapa Inlämning för lärare via roles -> För elever att view inlämningar
-Redigera Inlämning -> CHECK
-
-
-TEACHER
-Skapa inlämningar -> CHECK
-Rediga inlämningar -> CHECK
-Ta bort Inlämning -> CHECK
-
-STUDENT
-
-
-ASSIGNMENT
-Card
-titel
-Beskrivning
-due dates
-bild
-files (extra)
+MÅSTEN:
+1) HTTP TESTER
+2) Enable CLOCKWORK
 
 
 REQUIREMENTS
@@ -34,6 +15,8 @@ REQUIREMENTS
     Relationships -> Check
     Validation -> Check
     Views (Blade) -> Check
+
+
 
 
     TODO 

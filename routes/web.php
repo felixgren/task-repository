@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +43,14 @@ Route::middleware(['auth'])->group(function () {
     // WIP
     Route::get('/test', function (Request $request) {
         $user = $request->user();
-        dump($user->can('edit assignments'));
+        $user->givePermissionTo('delete assignments', 'edit assignments');
+        // $user->removePersmissionTo('edit assignments', 'delete assignments', 'create assignments');
+
+        // $user->givePermissionTo('create assignments', 'edit assignments');
+
+        // dump($user->can('edit assignments'));
         // dump($user->hasRole('admin'));
-        // dd($user->hasPermissionTo('lol'));
         // dd($user->hasRole('student'));
-        // dd($user->hasPermissionTo('edit assignments'));
     });
 
     // View account profile
@@ -61,11 +65,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/assignment/create', [AssignmentController::class, 'create'])->name('assignments.create');
     Route::post('/assignment/create', [AssignmentController::class, 'store'])->name('assignments.store');
-    Route::get('/assignment/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
 
+    Route::get('/assignment/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
     Route::put('/assignment/{assignment}', [AssignmentController::class, 'update'])->name("assignments.update");
-    Route::get('/assignment/{assignment}/edit', [AssignmentController::class, 'edit'])->name("assignments.edit");
     Route::delete('/assignment/{assignment}', [AssignmentController::class, 'destroy'])->name("assignments.destroy");
+
+    Route::post('/assignment/{assignment}/add', [AssignmentController::class, 'addImages'])->name('assignments.addImages');
+    Route::get('/assignment/{assignment}/edit', [AssignmentController::class, 'edit'])->name("assignments.edit");
 
     Route::get('/assignment/{assignment}/download/{fileName}', [AssignmentController::class, 'download'])->name("assignments.download");
 
