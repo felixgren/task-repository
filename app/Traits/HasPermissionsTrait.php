@@ -7,23 +7,26 @@ use App\Models\Permission;
 
 trait HasPermissionsTrait
 {
-    // Check if user has role, supports checking multiple roles. [input array]
-    // Compare input to roles in 'name' column in roles table
-    // --When checking multiple roles, any match will result true return--
-    public function checkRole(...$roles)
+    // We pass in a string, we avoid exposing the method through protected hasPermission.
+    public function hasPermissionTo($permission): bool
     {
-        foreach ($roles as $role) {
-            if ($this->roles->contains('name', $role)) {
-                return true;
-            }
-        }
-        return false;
+        return $this->hasPermission($permission);
     }
 
-    public function checkPermission($permission)
+    protected function hasPermission($permission): bool
     {
-        if ($this->permissions->where('name', $permission->name)) {
-            return true;
+        return $this->permissions->where('permission_name', $permission->permission_name)->count();
+    }
+
+    // Check if user has role, supports checking multiple roles. [input array]
+    // Compare input to roles in 'role_name' column in roles table
+    // --When checking multiple roles, any match will result true return--
+    public function hasRole(...$roles): bool
+    {
+        foreach ($roles as $role) {
+            if ($this->roles->contains('role_name', $role)) {
+                return true;
+            }
         }
         return false;
     }
