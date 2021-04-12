@@ -18,9 +18,13 @@
         <p>{{ $assignment->description }}</p>
     </div>
 
+    @if (count($files) >0 )
     <div>
-        <h3>Resources</h3>
-        <a href="/assignment/{{$assignment->id}}/download">Download file</a>
+        <h3 class="text-xl mt-4 font-bold opacity-90">Resources</h3>
+        @foreach ($files as $file)
+        <p><a class="underline" href="/assignment/{{$assignment->id}}/download/{{$file}}">{{ $file }}</a></p>
+        @endforeach
     </div>
+    @endif
 </main>
 @endsection

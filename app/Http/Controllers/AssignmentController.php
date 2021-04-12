@@ -49,14 +49,19 @@ class AssignmentController extends Controller
             $file->storeAs("/{$assignment->id}", $name);
         }
 
-
         return redirect("/assignment/{$assignment->id}");
     }
 
 
     public function show(Assignment $assignment)
     {
-        return view("assignments.show", ["assignment" => $assignment]);
+        // Gets the file from storage
+        $files = Storage::files("/{$assignment->id}");
+        $files = array_map(function ($file) {
+            return explode("/", $file)[1];
+        }, $files);
+
+        return view("assignments.show", ["assignment" => $assignment, "files" => $files]);
     }
 
     public function edit(Assignment $assignment)
@@ -75,12 +80,13 @@ class AssignmentController extends Controller
     public function destroy(Assignment $assignment)
     {
         $assignment->delete();
+        Storage::deleteDirectory("/{$assignment->id}");
         return redirect("/");
     }
 
-    public function download()
+    public function download(Assignment $assignment, $fileName)
     {
-        return Storage::download("/Exempeloffert.pdf");
+        return Storage::download("/{$assignment->id}/{$fileName}");
     }
 
 

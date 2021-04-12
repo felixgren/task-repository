@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    textarea {
+        @apply p-1;
+    }
+}
+
 @layer components {
     .navbar-link {
         @apply text-sm pr-4 sm:text-base sm:p-3;
