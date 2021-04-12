@@ -27,7 +27,6 @@ class AssignmentController extends Controller
 
     public function store()
     {
-
         $this->validateAssignment();
 
         // Logik för att skapa en konkret assignment
