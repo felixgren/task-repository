@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-
     public function deleteFile(Assignment $assignment, $fileName)
     {
-
         $deleted = Storage::delete("/{$assignment->id}/{$fileName}");
 
         return response()->json([
