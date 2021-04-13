@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminMenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,11 @@ Route::middleware(['auth'])->group(function () {
         // dump($user->can('edit assignments'));
         // dump($user->hasRole('admin'));
         // dd($user->hasRole('student'));
+    });
+
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/admin', [AdminMenuController::class, 'index'])->name('admin.menu');
+        Route::put('/admin', [AdminMenuController::class, 'update']);
     });
 
     // View account profile
