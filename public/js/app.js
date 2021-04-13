@@ -1902,17 +1902,16 @@ var deleteFileUploaded = /*#__PURE__*/function () {
                     while (1) {
                       switch (_context.prev = _context.next) {
                         case 0:
-                          console.log("http://localhost:3000/api/assignment/".concat(containerId, "/delete/").concat(id));
                           e.preventDefault();
-                          _context.next = 4;
+                          _context.next = 3;
                           return fetch("http://localhost:3000/api/assignment/".concat(containerId, "/delete/").concat(id));
 
-                        case 4:
+                        case 3:
                           res = _context.sent;
-                          _context.next = 7;
+                          _context.next = 6;
                           return res.json();
 
-                        case 7:
+                        case 6:
                           _yield$res$json = _context.sent;
                           deleted = _yield$res$json.deleted;
 
@@ -1920,7 +1919,7 @@ var deleteFileUploaded = /*#__PURE__*/function () {
                             elem.parentElement.remove();
                           }
 
-                        case 10:
+                        case 9:
                         case "end":
                           return _context.stop();
                       }
