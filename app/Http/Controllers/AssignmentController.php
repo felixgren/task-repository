@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assignment;
-use Illuminate\Http\File;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use App\Models\User;
 use Hashids\Hashids;
+use Illuminate\Http\File;
+use App\Models\Assignment;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AssignmentController extends Controller
 {
@@ -20,14 +21,17 @@ class AssignmentController extends Controller
     }
 
     // As god intended it to be
-    public function create()
+    public function create(User $user)
     {
+        // $this->authorize('create', $user);
+
         return view("assignments.create");
     }
 
 
     public function store()
     {
+        // $this->authorize('create');
         $this->validateAssignment();
 
         // Logik för att skapa en konkret assignment
@@ -48,6 +52,8 @@ class AssignmentController extends Controller
 
     public function show(Assignment $assignment)
     {
+        // this auth is in routes!
+
         // Gets the file from storage
         $files = $this->getAssociatedFiles($assignment);
 
@@ -56,6 +62,8 @@ class AssignmentController extends Controller
 
     public function edit(Assignment $assignment)
     {
+        $this->authorize('edit', $assignment);
+
         // Gets the file from storage
         $files = $this->getAssociatedFiles($assignment);
 
@@ -64,6 +72,8 @@ class AssignmentController extends Controller
 
     public function update(Assignment $assignment)
     {
+        $this->authorize('update', $assignment);
+
         $assignment->update($this->validateAssignment());
         return $this->show($assignment);
     }
@@ -71,6 +81,8 @@ class AssignmentController extends Controller
 
     public function addImages(Assignment $assignment)
     {
+        $this->authorize('update', $assignment);
+
         // die(var_dump($assignment));
         $this->saveFilesToDisk($assignment);
 
@@ -80,6 +92,8 @@ class AssignmentController extends Controller
 
     public function destroy(Assignment $assignment)
     {
+        $this->authorize('update', $assignment);
+
         $assignment->delete();
         Storage::deleteDirectory("/{$assignment->id}");
         return redirect("/");
