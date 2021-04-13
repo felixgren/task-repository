@@ -34,9 +34,6 @@ Route::get('/signin', [LoginController::class, 'index'])->name('login')->middlew
 Route::post('/signin', [LoginController::class, 'store'])->middleware(['guest']);
 Route::post('/signout', [LogoutController::class, 'store'])->name('logout')->middleware(['auth']);
 
-
-
-
 Route::middleware(['auth'])->group(function () {
     // Index view, shows a list of all assignments in Desc order
     Route::get('/', [AssignmentController::class, 'index'])->name('dashboard');
