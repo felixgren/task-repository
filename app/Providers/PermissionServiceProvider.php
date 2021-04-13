@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Assignment;
 use App\Models\Permission;
+use App\Policies\AssignmentPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;

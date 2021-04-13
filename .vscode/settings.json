@@ -1,3 +1,106 @@
 {
     "tailwindCSS.lint.cssConflict": "ignore",
+
+    "explorer.confirmDragAndDrop": false,
+    "git.enableSmartCommit": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "editor.wordWrap": "on",
+    "explorer.openEditors.visible": 0,
+    // Används för att få autocomplete suggestions överst
+    "editor.suggestSelection": "first",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    // sätter snippets ovanför Emmet suggestions.
+    // "editor.snippetSuggestions": "top",
+
+    // "editor.fontFamily": "Comic Sans",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.iconTheme": "material-icon-theme",
+
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+
+    "template-string-converter.enabled": true,
+    "template-string-converter.quoteType": "both",
+    "template-string-converter.validLanguages": [
+        "typescript",
+        "javascript",
+        "typescriptreact",
+        "javascriptreact"
+    ],
+
+    "emmet.triggerExpansionOnTab": true,
+
+    "editor.formatOnSave": true,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 2,
+    "workbench.statusBar.visible": true,
+
+    // Gömmer .next folder, och node_modules från explorer
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".next": true,
+        "node_modules": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.colorCustomizations": {
+        "[One Dark Pro]": {
+            "editor.background": "#111",
+            "terminal.background": "#222"
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[One Dark Pro]": {
+            "variables": "#fa5c5c",
+            "types": "#bf6fee",
+            "strings": "#e5ff00",
+            "keywords": "#61cbfc",
+            "comments": "#a3a3a3",
+            "functions": "#0bc1f8",
+            "numbers": "#e5ff00"
+        },
+        "[Palenight Theme]": {
+            "numbers": "#F8D8C4"
+        }
+    },
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "window.menuBarVisibility": "toggle",
+    "glassit.alpha": 255,
+    "liveServer.settings.CustomBrowser": "firefox",
+    "files.autoSave": "off",
+    "sync.gist": "5ff3264b2443319529d88d86d1e100d0",
+    "liveServer.settings.donotVerifyTags": true,
+    "update.mode": "none",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "vivaldi-stable",
+    "workbench.colorTheme": "Palenight Theme",
+    "php.validate.executablePath": "/usr/bin/php80",
+    "php.executablePath": "/usr/bin/php80",
+    "git.autofetch": true
 }

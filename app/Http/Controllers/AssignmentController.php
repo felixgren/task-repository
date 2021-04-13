@@ -114,10 +114,12 @@ class AssignmentController extends Controller
 
         Storage::disk("local")->makeDirectory($assignment->id);
 
-        foreach (request()->file("file") as $file) {
-            $name = $file->getClientOriginalName();
-            $name = preg_replace("(\s|\(|\))", "_", $name);
-            $file->storeAs("/{$assignment->id}", $name);
+        if (request()->file("file")) {
+            foreach (request()->file("file") as $file) {
+                $name = $file->getClientOriginalName();
+                $name = preg_replace("(\s|\(|\))", "_", $name);
+                $file->storeAs("/{$assignment->id}", $name);
+            }
         }
     }
 }

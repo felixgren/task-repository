@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\Assignment;
+use App\Policies\AssignmentPolicy;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Assignment::class => AssignmentPolicy::class,
     ];
 
     /**
@@ -21,14 +23,14 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    // public function boot()
-    // {
-    //     $this->registerPolicies();
-    //     Permission::get($permission){
-    //         Gate::define('create-assignment', function ($user) use ($permission) {
-    //             return $user->checkPermission('create-assignment');
-    //         });
+    public function boot()
+    {
+        $this->registerPolicies();
+        // Permission::get($permission){
+        //     Gate::define('create-assignment', function ($user) use ($permission) {
+        //         return $user->checkPermission('create-assignment');
+        //     });
 
-    //     })
-    // }
+        // })
+    }
 }
