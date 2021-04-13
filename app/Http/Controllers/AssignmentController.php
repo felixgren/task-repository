@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Hashids\Hashids;
 
 class AssignmentController extends Controller
 {
@@ -113,10 +114,10 @@ class AssignmentController extends Controller
 
         Storage::disk("local")->makeDirectory($assignment->id);
 
-        for ($i = 0; $i < count(request()->file("file")); $i++) {
-            $file = request()->file("file")[$i];
-            $ext = $file->extension();
-            $file->storeAs("/{$assignment->id}", "{$i}.{$ext}");
+        foreach (request()->file("file") as $file) {
+            $name = $file->getClientOriginalName();
+            $name = preg_replace("(\s|\(|\))", "_", $name);
+            $file->storeAs("/{$assignment->id}", $name);
         }
     }
 }
