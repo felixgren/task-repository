@@ -10,7 +10,7 @@
                     {{ session('status') }}
                 </h2>
             @else
-                <h2 class="">Please enter your details</h2>
+                <h2 class="">Please enter yoddsasdur your details</h2>
             @endif
 
             <form action="{{ route('login') }}" method="post">
