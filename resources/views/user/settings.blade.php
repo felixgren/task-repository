@@ -6,7 +6,7 @@
         <h2 class="text-lg text-center font-light"><b>Welcome to your settings {{ $user->name }}</b></h2>
 
         <div>
-            <img class="border-2 border-gray-300 rounded-lg w-40 h-40 m-auto my-3 object-cover dark:border-transparent" src="" alt="Your profile.. sooner or later...">
+            <img class="border-2 border-gray-300 rounded-lg w-40 h-40 m-auto my-3 object-cover dark:border-transparent" src="{{ asset($user->profile_photo_path) }}" alt="Your profile.. sooner or later...">
         </div>
 
         <form action="" method="post" enctype="multipart/form-data">
