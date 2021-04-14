@@ -27,11 +27,16 @@ class AssignmentPolicy
 
     public function edit(User $user, Assignment $assignment)
     {
-        return $user->id === $assignment->user_id;
+        return $user->id === $assignment->user_id || $user->can('edit assignments');
     }
 
     public function update(User $user, Assignment $assignment)
     {
-        return $user->id === $assignment->user_id;
+        return $user->id === $assignment->user_id || $user->can('edit assignments');
+    }
+
+    public function delete(User $user, Assignment $assignment)
+    {
+        return $user->id === $assignment->user_id || $user->can('delete assignments');
     }
 }

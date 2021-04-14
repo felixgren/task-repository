@@ -48,12 +48,19 @@
         <input class="bg-main hover:bg-blue-400 px-4 py-2 cursor-pointer" type="submit" value="Update Assignment">
     </form>
 
-
+    @can('delete', $assignment)    
     <form class="deleteForm flex w-full mt-2 md:justify-end md:-mt-10" method="POST" action="/assignment/{{$assignment->id}}">
         @csrf
         @method("DELETE")
         <button class="deleteAssignmentBtn bg-red-500 hover:bg-red-600 px-4 py-2" type="submit">Delete Assignment</button>
     </form>
+    @elsecan('edit', $assignment)
+    <form class="deleteForm flex w-full mt-2 md:justify-end md:-mt-10" method="POST" action="/assignment/{{$assignment->id}}">
+        @csrf
+        @method("DELETE")
+        <button class="deleteAssignmentBtn bg-gray-600 hover:bg-gray-600 px-4 py-2" type="submit">Delete Assignment</button>
+    </form>
+    @endcan
 
     <div class="mt-12">
         <h3 class="text-2xl font-bold">Add extra resources</h3>

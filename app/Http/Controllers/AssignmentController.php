@@ -90,7 +90,7 @@ class AssignmentController extends Controller
 
     public function destroy(Assignment $assignment)
     {
-        $this->authorize('update', $assignment);
+        $this->authorize('delete', $assignment);
 
         $assignment->delete();
         Storage::deleteDirectory("/{$assignment->id}");
