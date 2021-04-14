@@ -81,3 +81,30 @@ Run all tests
 
 -   [felixgren](https://github.com/felixgren)
 -   [Martin Hansson](https://github.com/alegherix)
+    The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Code review
+
+-   Tests currently fails on signout user
+-   Tests currently fails on get user
+-   Tests currently fails on get user settings
+-   Complete the admin authentication process
+-   Complete the teacher authentication process
+-   Consider splitting up the admin/teacher tests in seperate files (for readability)
+-   Impressive route configuration
+-   Delete unused code in AdminMenuController
+-   Consider translating comments written in a foreign language into english
+-   All requirements are met, good work
+-   Consider running tests on an external database
+-   If you do, you can use RefreshDatabase on each test run
+-   Remove unused code from routes
+-   Users arent able to download assignments
+-   Users cannot upload profile pictures
+-   Interesting idea using different levels of authorization
+-   Good dir structure and clean code
+-   Responsive + 1
+-   Tailwind + 1
+-   Make sure you set up the teacher authorization request on registration
+-   As far as we see you've met all the requirements, great job!
+
+by @pnpjss, @emilvictor
