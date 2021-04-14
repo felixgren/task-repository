@@ -17,7 +17,7 @@ class AssignmentTest extends TestCase
     // CRUD TESTS for Assignments
     public function testGetCreatingAssignment()
     {
-        $this->getRouteTest("/assignment/create");
+        $this->getAuthenticatedUser()->get("/assignment/create")->assertStatus(403);
     }
 
     public function testUnauthorizedShowAcess()
@@ -63,29 +63,14 @@ class AssignmentTest extends TestCase
         $response->assertStatus(302);
     }
 
-
-    // TODO Fix this to actually fail
     // Should fail cause user is no authenticated to create Asignments
     public function testCreateAssignment()
     {
         $assignment = Assignment::factory()->create();
         $response = $this->getAuthenticatedUser()->post(route('assignments.store', $assignment));
-        $response->assertStatus(302);
+        $response->assertStatus(403);
     }
 
-
-    public function testAddingExtraResourceImages()
-    {
-        Storage::fake('local');
-
-        $file = UploadedFile::fake()->image('avatar.jpg');
-
-        $response = $this->post('/assignment/1/add', [
-            'file' => $file,
-        ]);
-
-        Storage::disk('local')->assertExists($file);
-    }
 
     // Should suceed cause user has privilleges
     public function testCreateAssignmentAsAdmin()
@@ -112,40 +97,9 @@ class AssignmentTest extends TestCase
         $this->assertDatabaseHas('assignments', ['title' => "An updated title", "id" => $assignment->id]);
     }
 
-
-    public function testGetUser()
-    {
-        $this->getRouteTest("/users/alegherix");
-    }
-
-    public function testGetUserSettings()
-    {
-        $this->getRouteTest("/settings");
-    }
-
-    public function testUploadResource()
-    {
-        Storage::fake('avatars');
-        $file = UploadedFile::fake()->image('avatar.jpg');
-
-        Assignment::factory()->create();
-
-        $response = $this->post('/assignment/create', [
-            "user_id" => 1,
-            "title" => "random",
-            "description" => "random",
-            "file" => $file,
-            "due_date" => "2021-04-19"
-        ]);
-
-        Storage::disk('avatars')->assertMissing($file->hashName());
-    }
-
-
     // Should not be visible for unauthorized users
     public function testGetAdmin()
     {
-        // imagecreatetruecolor());
         $response = $this->getAuthenticatedUser()->get('/admin');
         $response->assertStatus(404);
     }

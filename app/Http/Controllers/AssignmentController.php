@@ -21,17 +21,17 @@ class AssignmentController extends Controller
     }
 
     // As god intended it to be
-    public function create(User $user)
+    public function create(Assignment $assignment)
     {
-        // $this->authorize('create', $user);
+        $this->authorize('create', $assignment);
 
         return view("assignments.create");
     }
 
 
-    public function store()
+    public function store(Assignment $assignment)
     {
-        // $this->authorize('create');
+        $this->authorize('create', $assignment);
         $this->validateAssignment();
 
         // Logik för att skapa en konkret assignment
@@ -125,6 +125,7 @@ class AssignmentController extends Controller
     {
 
         Storage::disk("local")->makeDirectory($assignment->id);
+
 
         if (request()->file("file")) {
             foreach (request()->file("file") as $file) {

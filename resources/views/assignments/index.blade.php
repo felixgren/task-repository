@@ -16,7 +16,7 @@
         <div class="border-gray-300 border-2 rounded-md p-4 md:px-8 md:pb-6 flex flex-col">
             <div class="flex justify-between items-center flex-wrap">
                 <p class="text-lg text-blue-900 mb-1">{{$assignment->title}}</p>
-                <p class="text-blue-900 mb-1 opacity-40">{{$assignment->due_date}}</p>
+                <p class="text-blue-900 mb-1 opacity-40">Due date: {{$assignment->due_date}}</p>
             </div>
             <div style="height: 1px;" class="separator w-full bg-gray-300 rounded-md mb-2"></div>
             <p>{{mb_strimwidth($assignment->description, 0, 255, "...")}}</p>
@@ -27,8 +27,8 @@
             </div>
         </div>
 
-            @endforeach
-        </section>
+        @endforeach
+    </section>
 
-    </main>
+</main>
 @endsection

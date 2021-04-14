@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -55,5 +53,34 @@ class UserTest extends TestCase
             ->withSession(['banned' => false])
             ->post(route('logout', $user));
         $response->assertStatus(302);
+    }
+
+    public function testGetUser()
+    {
+        $user = User::factory()->create();
+        $this
+            ->actingAs($user)
+            ->withSession(['banned' => false])
+            ->get("/users/alegherix")
+            ->assertStatus(200);
+    }
+
+    public function testGetUserSettings()
+    {
+        $user = User::factory()->create();
+        $this
+            ->actingAs($user)
+            ->withSession(['banned' => false])
+            ->get("/users/alegherix")->assertStatus(200);
+    }
+
+    public function testUpdateUserSettings()
+    {
+        $user = User::factory()->create();
+        $user->save();
+        $this
+            ->actingAs($user)
+            ->withSession(['banned' => false])
+            ->put(route('update.settings', $user))->assertStatus(302);
     }
 }

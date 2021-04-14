@@ -18,13 +18,12 @@ class AssignmentPolicy
         return null;
     }
 
-    // public function create(User $user)
-    // {
-    //     if ($user->hasPermissionTo('create assignments')) {
-    //         return true;
-    //     }
-    //     return null;
-    // }
+    public function create(User $user, Assignment $assignment)
+    {
+        if ($user->can('create assignments')) {
+            return true;
+        }
+    }
 
     public function edit(User $user, Assignment $assignment)
     {

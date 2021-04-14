@@ -21,11 +21,13 @@ class AssignmentFactory extends Factory
      */
     public function definition()
     {
+        $date = str_pad(rand(1, 29), 2, '0', STR_PAD_LEFT);
+        $month = str_pad(rand(5, 12), 2, '0', STR_PAD_LEFT);
         return [
-            "title" => "Something",
-            "description" => "absolutley random",
-            "due_date" => "2021-04-19",
-            "user_id" => 1,
+            "title" => $this->faker->sentence(5),
+            "description" => $this->faker->paragraph(50),
+            "due_date" => "2021-$month-$date",
+            "user_id" => rand(1, 5),
         ];
     }
 }
