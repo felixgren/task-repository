@@ -25,6 +25,7 @@ composer install
 npm install
 cp .env.example .env
 php artisan key:generate
+follow setting up database instruction below, then return and complete final step
 php artisan serve
 
 optional: npm run watch (if you want to use browsersync)
