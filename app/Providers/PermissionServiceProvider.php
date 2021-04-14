@@ -31,7 +31,7 @@ class PermissionServiceProvider extends ServiceProvider
     public function boot()
     {
         // Check if permissions table exists, boot is ran on every artisan command which results in error when migrations have not been ran.
-        if (Schema::hasTable('permissions')) {
+        if (!\App::runningInConsole()) {
             // Iterate through permission collection
             // Pass objects to hasPermissionTo, where the name is extracted & compared and returns true/false based on if match is found.
             // Gate recieve parameters passed from auth blade directives (@can), here we can pass in a permission name such as @can 'create assignments'
