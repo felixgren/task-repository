@@ -123,7 +123,6 @@ class AssignmentController extends Controller
 
     public function saveFilesToDisk(Assignment $assignment)
     {
-
         Storage::disk("local")->makeDirectory($assignment->id);
 
 
