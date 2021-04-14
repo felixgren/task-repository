@@ -82,8 +82,6 @@ class AssignmentController extends Controller
     public function addImages(Assignment $assignment)
     {
         $this->authorize('update', $assignment);
-
-        // die(var_dump($assignment));
         $this->saveFilesToDisk($assignment);
 
         return redirect("/assignment/{$assignment->id}");
