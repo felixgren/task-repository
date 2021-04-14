@@ -10,10 +10,8 @@ use Hash;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-
 class AssignmentTest extends TestCase
 {
-
     // CRUD TESTS for Assignments
     public function testGetCreatingAssignment()
     {
