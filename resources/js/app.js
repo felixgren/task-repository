@@ -27,7 +27,7 @@ const deleteFileUploaded = async () => {
         elem.addEventListener("click", async (e) => {
             e.preventDefault();
             const res = await fetch(
-                `http://localhost:3000/api/assignment/${containerId}/delete/${id}`
+                `http://localhost:8000/api/assignment/${containerId}/delete/${id}`
             );
 
             const { deleted } = await res.json();

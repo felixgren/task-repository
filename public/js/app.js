@@ -1904,7 +1904,7 @@ var deleteFileUploaded = /*#__PURE__*/function () {
                         case 0:
                           e.preventDefault();
                           _context.next = 3;
-                          return fetch("http://localhost:3000/api/assignment/".concat(containerId, "/delete/").concat(id));
+                          return fetch("http://localhost:8000/api/assignment/".concat(containerId, "/delete/").concat(id));
 
                         case 3:
                           res = _context.sent;
