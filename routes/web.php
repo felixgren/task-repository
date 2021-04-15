@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AdminMenuController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminMenuController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\DEVGimmeMenuController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,15 +43,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/test', function () {
         // $user = $request->user();
         $user = Auth::user();
-        $user->givePermissionTo('delete assignments', 'edit assignments');
-        // $user->removePersmissionTo('edit assignments', 'delete assignments', 'create assignments');
-
-        // $user->givePermissionTo('create assignments', 'edit assignments');
-
         // dump($user->can('edit assignments'));
         // dump($user->hasRole('admin'));
         // dd($user->hasRole('student'));
     });
+
+    // DEMO hacker menu
+    Route::get('/gimme', [DEVGimmeMenuController::class, 'index'])->name('gimme');
+    Route::post('/gimme', [DEVGimmeMenuController::class, 'update']);
 
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin', [AdminMenuController::class, 'index'])->name('admin.menu');

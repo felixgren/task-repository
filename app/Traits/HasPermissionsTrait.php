@@ -77,4 +77,22 @@ trait HasPermissionsTrait
     {
         return $this->belongsToMany(Permission::class, 'users_permissions'); // user has many perms
     }
+
+    // WIP for demo
+    public function giveRole($role)
+    {
+        $role = $this->getRole($role);
+        $this->roles()->syncWithoutDetaching($role);
+    }
+
+    public function removeRole($role)
+    {
+        $role = $this->getRole($role);
+        $this->roles()->detach($role);
+    }
+
+    public function getRole($role)
+    {
+        return Role::where('role_name', $role)->get();
+    }
 }
