@@ -20,7 +20,7 @@
     "editor.fontSize": 16,
     "editor.fontLigatures": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
 
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
